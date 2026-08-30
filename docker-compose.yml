@@ -1,0 +1,20 @@
+services:
+  tracktor_fork:
+    build: .
+    container_name: tracktor
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      HOST: "0.0.0.0"
+      PORT: "3000"
+      DB_PATH: /data/tracktor.db
+      LOG_LEVEL: info
+      LOG_DIR: /data/logs
+      UPLOADS_DIR: /data/uploads
+      BODY_SIZE_LIMIT: Infinity
+    volumes:
+      # Changed the host path to avoid overwriting your original database
+      - /home/tony/docker/tracktor_fork:/data
+    ports:
+      # Bound to the new requested port
+      - "127.0.0.1:54320:3000"
