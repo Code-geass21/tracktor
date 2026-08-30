@@ -1,7 +1,7 @@
 services:
   tracktor_fork:
     build: .
-    container_name: tracktor
+    container_name: tracktor_fork
     restart: unless-stopped
     environment:
       NODE_ENV: production
